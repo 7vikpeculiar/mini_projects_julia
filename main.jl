@@ -3,4 +3,4 @@ using .Regex
 # println(matchStart("a","a"));
 # println(matchReg("abc","abc\$"));
 # println(searchReg("^abc","abcd"));
-println(matchReg("b+c","bc"));
+println(matchReg("!!c","!c"));

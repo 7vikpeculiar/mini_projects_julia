@@ -18,6 +18,8 @@ function matchReg(pattern::String,input::String)
         return true
     elseif pattern == "\$" && input == ""
         return true
+    elseif length(pattern) >= 2 && pattern[1] == '!' && pattern[2] in "^*?+.!"
+        return matchStart(pattern[2:2],input[1:1]) && matchReg(pattern[3:end],input[2:end])
     elseif length(pattern) >= 2 && pattern[2] == '?'
         return matchQuestion(pattern,input)
     elseif length(pattern) >= 2 && pattern[2] == '*'
@@ -59,6 +61,8 @@ end
 function matchPlus(pattern::String,input::String)
     # Either 1 or more, so ...
     if matchStart(pattern[1:1],input[1:1])
+        # After one match, + is the same as * now
+        # a+ = a.a* 
         pattern_new = string(pattern[1:1],"*",pattern[3:end]);
         return matchStar(pattern_new, input[2:end])
     else
