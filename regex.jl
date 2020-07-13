@@ -47,9 +47,7 @@ function matchQuestion(pattern::String,input::String)
 end
 
 function matchStar(pattern::String,input::String)
-    # print("Here");
     if matchStart(pattern[1:1],input[1:1])
-        print("StarHere\n");
         return matchReg(pattern,input[2:end])
     else
         return matchReg(pattern[3:end],input)
