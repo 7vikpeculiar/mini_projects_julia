@@ -4,7 +4,7 @@ Built a simple regex engine in Julia.
 
 Functionality
 - Has search (`searchReg`) and match (`matchReg`) functions
-- Supports wildcards like `*,?,.,^,$`
+- Supports wildcards like `*,?,.,^,$,+`
 
 | WildCard | Meaning |
 | --------------- | --------------- |
@@ -13,5 +13,6 @@ Functionality
 | .  | Any character     |
 | ^  | Start of string   |
 | $  | End of string     |     
+| _+ | One or more of _  |
 
 Based on this [blog post](https://nickdrane.com/build-your-own-regex/)

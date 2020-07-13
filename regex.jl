@@ -1,6 +1,6 @@
 module Regex 
 
-export matchStart, matchReg, searchReg, matchStar, matchQuestion
+export matchStart, matchReg, searchReg, matchStar, matchQuestion, matchPlus
 
 function matchStart(pattern::String,input::String)
     if pattern == ""
@@ -22,6 +22,8 @@ function matchReg(pattern::String,input::String)
         return matchQuestion(pattern,input)
     elseif length(pattern) >= 2 && pattern[2] == '*'
         return matchStar(pattern,input)
+    elseif length(pattern) >= 2 && pattern[2] == '+'
+        return matchPlus(pattern,input)
     else
         return matchStart(pattern[1:1],input[1:1]) && matchReg(pattern[2:end], input[2:end])
     end
@@ -54,5 +56,14 @@ function matchStar(pattern::String,input::String)
     end
 end
 
+function matchPlus(pattern::String,input::String)
+    # Either 1 or more, so ...
+    if matchStart(pattern[1:1],input[1:1])
+        pattern_new = string(pattern[1:1],"*",pattern[3:end]);
+        return matchStar(pattern_new, input[2:end])
+    else
+        return false
+    end
+end
 
 end
