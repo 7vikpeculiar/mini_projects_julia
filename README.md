@@ -15,4 +15,6 @@ Functionality
 | $  | End of string     |     
 | _+ | One or more of _  |
 | !  | Makes wildcards unwildcardy |
+
+
 Based on this [blog post](https://nickdrane.com/build-your-own-regex/)
