@@ -70,5 +70,4 @@ function matchPlus(pattern::String,input::String)
     end
 end
 
-
 end
